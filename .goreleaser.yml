@@ -46,49 +46,10 @@ changelog:
 
 release:
   github:
-    owner: viaduct-ai
+    owner: punparin
     name: kustomize-sops
 
 dockers:
-  # Templates of the Docker image names.
-  - image_templates:
-      - "punparin/{{ .ProjectName }}:latest"
-      - "punparin/{{ .ProjectName }}:{{ .Tag }}"
-      - "punparin/{{ .ProjectName }}:v{{ .Major }}"
-      - "quay.io/punparin/{{ .ProjectName }}:latest"
-      - "quay.io/punparin/{{ .ProjectName }}:{{ .Tag }}"
-      - "quay.io/punparin/{{ .ProjectName }}:v{{ .Major }}"
-
-    # Template of the docker build flags.
-    build_flag_templates:
-      - "--pull"
-      - "--label=org.opencontainers.image.created={{.Date}}"
-      - "--label=org.opencontainers.image.title={{.ProjectName}}"
-      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
-      - "--label=org.opencontainers.image.version={{.Version}}"
-      - "--platform=linux/arm/v7"
-
-    # For multiple architectures
-    use: buildx
-
-    # If your Dockerfile copies files other than the binary itself,
-    # you should list them here as well.
-    # Note that goreleaser will create the same structure inside the temporary
-    # folder, so if you add `foo/bar.json` here, on your Dockerfile you can
-    # `COPY foo/bar.json /whatever.json`.
-    # Also note that the paths here are relative to the folder in which
-    # goreleaser is being run.
-    # This field does not support wildcards, you can add an entire folder here
-    # and use wildcards when you `COPY`/`ADD` in your Dockerfile.
-    extra_files:
-      - go.mod
-      - go.sum
-      - Makefile
-      - scripts/
-      - ksops.go
-      # include .git for version
-      - .git/
-
   # Templates of the Docker image names.
   - image_templates:
       - "punparin/{{ .ProjectName }}:{{ .Tag }}-arm64"
@@ -103,7 +64,7 @@ dockers:
       - "--label=org.opencontainers.image.title={{.ProjectName}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.version={{.Version}}"
-      - "--platform=linux/arm64"
+      - "--platform=linux/arm/v7"
 
     # For multiple architectures
     use: buildx
