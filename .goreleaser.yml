@@ -52,12 +52,12 @@ release:
 dockers:
   # Templates of the Docker image names.
   - image_templates:
-      - "viaductoss/{{ .ProjectName }}:latest"
-      - "viaductoss/{{ .ProjectName }}:{{ .Tag }}"
-      - "viaductoss/{{ .ProjectName }}:v{{ .Major }}"
-      - "quay.io/viaductoss/{{ .ProjectName }}:latest"
-      - "quay.io/viaductoss/{{ .ProjectName }}:{{ .Tag }}"
-      - "quay.io/viaductoss/{{ .ProjectName }}:v{{ .Major }}"
+      - "punparin/{{ .ProjectName }}:latest"
+      - "punparin/{{ .ProjectName }}:{{ .Tag }}"
+      - "punparin/{{ .ProjectName }}:v{{ .Major }}"
+      - "quay.io/punparin/{{ .ProjectName }}:latest"
+      - "quay.io/punparin/{{ .ProjectName }}:{{ .Tag }}"
+      - "quay.io/punparin/{{ .ProjectName }}:v{{ .Major }}"
 
     # Template of the docker build flags.
     build_flag_templates:
@@ -66,7 +66,7 @@ dockers:
       - "--label=org.opencontainers.image.title={{.ProjectName}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.version={{.Version}}"
-      - "--platform=linux/amd64"
+      - "--platform=linux/arm/v7"
 
     # For multiple architectures
     use: buildx
@@ -91,10 +91,10 @@ dockers:
 
   # Templates of the Docker image names.
   - image_templates:
-      - "viaductoss/{{ .ProjectName }}:{{ .Tag }}-arm64"
-      - "viaductoss/{{ .ProjectName }}:v{{ .Major }}-arm64"
-      - "quay.io/viaductoss/{{ .ProjectName }}:{{ .Tag }}-arm64"
-      - "quay.io/viaductoss/{{ .ProjectName }}:v{{ .Major }}-arm64"
+      - "punparin/{{ .ProjectName }}:{{ .Tag }}-arm64"
+      - "punparin/{{ .ProjectName }}:v{{ .Major }}-arm64"
+      - "quay.io/punparin/{{ .ProjectName }}:{{ .Tag }}-arm64"
+      - "quay.io/punparin/{{ .ProjectName }}:v{{ .Major }}-arm64"
 
     # Template of the docker build flags.
     build_flag_templates:
